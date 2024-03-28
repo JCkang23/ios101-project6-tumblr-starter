@@ -14,10 +14,49 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Refresh control
+        let refreshFeature = UIRefreshControl()
+                
+        // Assign a target-action pair
+        refreshFeature.addTarget(self, action: #selector(refreshPosts(_:)), for: .valueChanged)
+                
+        // Refresh control to the table view
+        tableView.refreshControl = refreshFeature
 
         tableView.dataSource = self
         fetchPosts()
+        
+        // Implement dynamic large title
+        navigationController?.navigationBar.prefersLargeTitles = true
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Customary to call the overridden method on `super` any time you override a method.
+        super.viewWillAppear(animated)
+
+        // get the index path for the selected row
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+
+            // Deselect the currently selected row
+            tableView.deselectRow(at: selectedIndexPath, animated: animated)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the index path for the selected row.
+        // `indexPathForSelectedRow` returns an optional `indexPath`, so we'll unwrap it with a guard.
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
+
+        // Get the selected movie from the movies array using the selected index path's row
+        let selectedMovie = posts[selectedIndexPath.row]
+
+        // Get access to the detail view controller via the segue's destination. (guard to unwrap the optional)
+        guard let detailViewController = segue.destination as? DetailViewController else { return }
+
+        detailViewController.post = selectedMovie
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,4 +117,14 @@ class ViewController: UIViewController, UITableViewDataSource {
         }
         session.resume()
     }
+    
+    @objc func refreshPosts(_ sender: Any) {
+        
+            // Posts refreshing
+            fetchPosts()
+                    
+            // End Posts refreshing
+            tableView.refreshControl?.endRefreshing()
+    }
+    
 }
