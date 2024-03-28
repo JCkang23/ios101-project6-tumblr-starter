@@ -3,7 +3,7 @@
 
 Submitted by: **Josue Cikanga**
 
-**Tumblr** is an app that ... [TODO] 
+**Tumblr** is an app that displays images in rows - each image with a short description. Clicking in each row leads to a storyline of the specific row.
 
 Time spent: **12** hours spent in total
 
