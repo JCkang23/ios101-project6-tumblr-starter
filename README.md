@@ -3,7 +3,7 @@
 
 Submitted by: **Josue Cikanga**
 
-**Tumblr** is an app that displays images in rows - each image with a short description. Clicking in each row leads to a storyline of the specific row.
+**Tumblr** is an app that displays images in rows - each image with a short description. Clicking on each row leads to a storyline of the specific row.
 
 Time spent: **12** hours spent in total
 
@@ -19,13 +19,14 @@ The following **required** functionality is completed:
 
 The following **additional** features are implemented:
 
-- [X] List anything else that you can get done to improve the app functionality!
-    - Refresh feature to the table view
+- [X] Further functionalities!
+    - Refresh feature on the main storyboard controller to change the table view background
+    - Refresh button on the secondary storyboard controller that randomizes the background color and changes the text color
 
 ## Video Walkthrough
 
-    <a href="https://www.loom.com/share/6a24ad292b904ffa8cab6a93eb80ff5a">
-            Simulator - iPhone 15 Pro - 28 March 2024 - Watch Video
+    <a href="https://www.loom.com/share/803ab5628f2f45058ced7cdf32ab59df">
+            Simulator - iPhone 15 Pro - 2 April 2024 - Watch Video
     </a>
 
 ## Notes
